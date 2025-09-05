@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Details</title>
+    <style>
+        body {
+            background-color: #000b1d;
+            color: white;
+            font-family: Arial;
+            text-align: center;
+        }
+        input, textarea {
+            padding: 10px;
+            width: 300px;
+            margin: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: orange;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter Your Delivery Details</h1>
+
+    <input type="text" placeholder="Your Name" required><br>
+    <input type="text" placeholder="Phone Number" required><br>
+    <textarea placeholder="Delivery Address" required></textarea><br>
+
+    <label>
+        <input type="checkbox" checked> Cash on Delivery
+    </label><br><br>
+
+    <button onclick="confirmOrder()">Confirm Order</button>
+
+    <script>
+        function confirmOrder() {
+            alert("Your order has been confirmed! 🎉");
+            window.location.href = "thankyou.html"; // Optional: Create this page
+        }
+    </script>
+</body>
+</html>
