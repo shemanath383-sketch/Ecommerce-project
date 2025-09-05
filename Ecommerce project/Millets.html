@@ -1,0 +1,114 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vegetables - FreshCart</title>
+    <style>
+        body {
+            background-color: #061222;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            padding: 20px;
+            background: green;
+            color: white;
+            margin: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns */
+            gap: 20px;
+            padding: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .card {
+            color: black;
+            background-color: b;
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .card h3 {
+            margin: 10px 0;
+        }
+        .card p {
+            color: #444;
+        }
+        .card button {
+            background-color: orange;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .card button:hover {
+            background-color: darkorange;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Organic Grains & Pulses items</h1>
+    <div class="container" id="product-container"></div>
+
+    <script>
+        const products = [
+            {name: "Brown Rice",   price:50, Kg:2, img: "assets/images/Brown Rice.png" },
+            {name: "Red Rice", price: 30, img: "assets/images/Red Rice.png"},
+            {name: "Basmati Rice", price: 40, img: "assets/images/Basmati Rice.jpg"},
+            {name: "Quinoa", price: 60, img: "assets/images/Quinoa.png"},
+            {name: "Foxtail Millets", price: 35, img: "assets/images/Foxtail Millets.jpg"},
+            {name: "Little Millets", price: 45, img: "assets/images/Little Millets.png"},
+            {name: "Barnyard Millets", price: 25, img: "assets/images/Barnyard Millets.jpg"},
+            {name: "Koko Millets", price: 30, img: "assets/images/Koko Millets.jpg"},
+            {name: "Finger Millets", price: 20, img: "assets/images/Finger Millets.jpg"},
+            {name: "Peal Millets", price: 70, img: "assets/images/Peal Millets.jpg"},
+            {name: "Green gram", price: 25, img: "assets/images/Green gram.jpg"},
+            {name: "Black gram", price: 35, img: "assets/images/Black gram.jpg"},
+            {name: "Red lintils", price: 50, img: "assets/images/Red lintils.jpg"},
+            {name: "Bengal gram", price: 40, img: "assets/images/Bengal gram.jpg"},
+            {name: "Toor dal", price: 30, img: "assets/images/Toor dal.jpg"},
+            {name: "Kidney beans", price: 45, img: "assets/images/Kidney beans.jpg"}
+        ];
+
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push({ name, price });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(name + " added to cart!");
+        }
+
+        const container = document.getElementById("product-container");
+
+        products.forEach(product => {
+            container.innerHTML += `
+                <div class="card">
+                    <img src="${product.img}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>₹${product.price} / kg</p>
+                    <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+                </div>
+            `;
+        });
+    </script>
+    
+<footer>
+        <p>&copy; 2025 Spare Parts Store. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,115 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vegetables - FreshCart</title>
+    <style>
+        body {
+            background-color: #061222;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            padding: 20px;
+            background: green;
+            color: white;
+            margin: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns */
+            gap: 20px;
+            padding: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .card {
+            color: black;
+            background-color: b;
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .card h3 {
+            margin: 10px 0;
+        }
+        .card p {
+            color: #444;
+        }
+        .card button {
+            background-color: orange;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .card button:hover {
+            background-color: darkorange;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Products items</h1>
+    <div class="container" id="product-container"></div>
+
+    <script>
+        const products = [
+            {name: "apple",   price:50, Kg:2, img: "assets/images/apple.jpg" },
+            {name: "Avacado", price: 30, img: "assets/images/Avacado.png"},
+            {name: "banana", price: 40, img: "assets/images/banana.png"},
+            {name: "Cherry", price: 60, img: "assets/images/Cherry.jpg"},
+            {name: "Custard apple", price: 35, img: "assets/images/Custard apple.jpg"},
+            {name: "Fig", price: 45, img: "assets/images/Fig.jpg"},
+            {name: "grapes", price: 25, img: "assets/images/grapes.jpg"},
+            {name: "Guava", price: 30, img: "assets/images/Guava.jpg"},
+            {name: "kiwi", price: 20, img: "assets/images/kiwi.jpg"},
+            {name: "Leman", price: 70, img: "assets/images/Leman.png"},
+            {name: "Mengo", price: 25, img: "assets/images/Mengo.png"},
+            {name: "Orange", price: 35, img: "assets/images/Orange.jpg"},
+            {name: "Papaya", price: 50, img: "assets/images/Papaya.jpg"},
+            {name: "Pear", price: 40, img: "assets/images/Pear.jpg"},
+            {name: "Pineapple", price: 30, img: "assets/images/Pineapple.jpg"},
+            {name: "Pomegranate", price: 45, img: "assets/images/Pomegranate.jpg"}
+        ];
+
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push({ name, price });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(name + " added to cart!");
+        }
+
+        const container = document.getElementById("product-container");
+
+        products.forEach(product => {
+            container.innerHTML += `
+                <div class="card">
+                    <img src="${product.img}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>₹${product.price} / kg</p>
+                    <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+                </div>
+            `;
+        });
+    </script>
+
+    
+<footer>
+        <p>&copy; 2025 Spare Parts Store. All rights reserved.</p>
+    </footer>
+</body>
+</html>

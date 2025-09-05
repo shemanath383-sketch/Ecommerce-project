@@ -1,0 +1,115 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Organics Dry foods items </title>
+    <style>
+        body {
+            background-color: #061222;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            padding: 20px;
+            background: green;
+            color: white;
+            margin: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns */
+            gap: 20px;
+            padding: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .card {
+            color: black;
+            background-color: b;
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .card h3 {
+            margin: 10px 0;
+        }
+        .card p {
+            color: #444;
+        }
+        .card button {
+            background-color: orange;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .card button:hover {
+            background-color: darkorange;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Organic Dry Foods items</h1>
+    <div class="container" id="product-container"></div>
+
+    <script>
+        const products = [
+            {name: "Almonds",   price:90, Kg:100, img: "assets/images/Almonds.jpg" },
+            {name: "Cashews", price: 50, img: "assets/images/Cashews.jpg"},
+            {name: "Walnuts", price: 40, img: "assets/images/Walnuts.jpg"},
+            {name: "Pistachias", price: 100, img: "assets/images/Pistachias.jpg"},
+            {name: "Raisins", price: 35, img: "assets/images/Raisins.jpg"},
+            {name: "Dates", price: 45, img: "assets/images/Dates.jpg"},
+            {name: "Apricots", price: 25, img: "assets/images/Apricots.jpg"},
+            {name: "Figs", price: 30, img: "assets/images/Figs.jpg"},
+            {name: "Dry Coconuts", price: 20, img: "assets/images/Dry Coconuts.jpg"},
+            {name: "Peanuts", price: 70, img: "assets/images/Peanuts.jpg"},
+            {name: "Pumpkin seeds", price: 25, img: "assets/images/Pumpkin seeds.jpg"},
+            {name: "Flax seeds", price: 35, img: "assets/images/Flax seeds.jpg"},
+            {name: "Trail Mix", price: 50, img: "assets/images/Trail Mix.jpg"},
+            {name: "Roasted chickpeas", price: 40, img: "assets/images/Roasted chickpeas.jpg"},
+            {name: "Granolo", price: 30, img: "assets/images/Granolo.jpg"},
+            {name: "dry foods", price: 45, img: "assets/images/dry foods .png.jpg"}
+        ];
+
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push({ name, price });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(name + " added to cart!");
+        }
+
+        const container = document.getElementById("product-container");
+
+        products.forEach(product => {
+            container.innerHTML += `
+                <div class="card">
+                    <img src="${product.img}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>₹${product.price} / kg</p>
+                    <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+                </div>
+            `;
+        });
+    </script>
+
+    
+<footer>
+        <p>&copy; 2025 Spare Parts Store. All rights reserved.</p>
+    </footer>
+</body>
+</html>

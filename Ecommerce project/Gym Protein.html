@@ -1,0 +1,115 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Organics Health protein powder </title>
+    <style>
+        body {
+            background-color: #061222;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            padding: 20px;
+            background: green;
+            color: white;
+            margin: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns */
+            gap: 20px;
+            padding: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .card {
+            color: black;
+            background-color: b;
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .card h3 {
+            margin: 10px 0;
+        }
+        .card p {
+            color: #444;
+        }
+        .card button {
+            background-color: orange;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .card button:hover {
+            background-color: darkorange;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Organics Health protein powder</h1>
+    <div class="container" id="product-container"></div>
+
+    <script>
+        const products = [
+            {name: "whey protein powder",   price:90, Kg:100, img: "assets/images/Organic whey protein powder.jpg" },
+            {name: "Plant-based protein powder", price: 50, img: "assets/images/Organic Plant-based protein powder.jpg"},
+            {name: "Pea protein powder", price: 40, img: "assets/images/Organic Pea protein powder.jpg"},
+            {name: "Brown rice  protein powder", price: 100, img: "assets/images/Organic Brown rice  protein powder.jpg"},
+            {name: "Hemp protein powder", price: 35, img: "assets/images/Organic  Hemp protein powder.jpg"},
+            {name: "Soy protein powder", price: 45, img: "assets/images/Organic   Soy protein powder.jpg"},
+            {name: "Pumpkin seeds protein", price: 25, img: "assets/images/Organic  Pumpkin seeds protein powder.jpg"},
+            {name: " China seeds protein powder", price: 30, img: "assets/images/Organic  China seeds protein powder.jpg"},
+            {name: "Quinoa protein powder", price: 20, img: "assets/images/Organic  Quinoa protein powder.jpg"},
+            {name: "Flax seeds protein powder", price: 70, img: "assets/images/Organic Flax seeds protein powder.jpg"},
+            {name: "Almond protein powde", price: 25, img: "assets/images/Organic  Almond protein powder.jpg"},
+            {name: "Cashew protein powder", price: 35, img: "assets/images/Organic   Cashew protein powder.jpg"},
+            {name: " Sunflower seeds protein powder", price: 50, img: "assets/images/Organic  Sunflower seeds protein powder.jpg"},
+            {name: " Spirulina protein powder", price: 40, img: "assets/images/Organic Spirulina protein powder.jpg"},
+            {name: " Moringa protein powder", price: 30, img: "assets/images/Organic Moringa protein powder.jpg"},
+            {name: "Peanut protein powder", price: 45, img: "assets/images/Organic Peanut protein powder.jpg"}
+        ];
+
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push({ name, price });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(name + " added to cart!");
+        }
+
+        const container = document.getElementById("product-container");
+
+        products.forEach(product => {
+            container.innerHTML += `
+                <div class="card">
+                    <img src="${product.img}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>₹${product.price} / kg</p>
+                    <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+                </div>
+            `;
+        });
+    </script>
+
+    
+<footer>
+        <p>&copy; 2025 Spare Parts Store. All rights reserved.</p>
+    </footer>
+</body>
+</html>
